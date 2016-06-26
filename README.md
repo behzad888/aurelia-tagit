@@ -1,2 +1,2 @@
-# tag-it
+# aurelia-tagit
 Aurelia tagit
