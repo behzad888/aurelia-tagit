@@ -1,3 +1,4 @@
+import {BaseConfig} from './base-config';
 export function configure(aurelia, configCallback) {
     aurelia.globalResources('./aurelia-tagit');
     
