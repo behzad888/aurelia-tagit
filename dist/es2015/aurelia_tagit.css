@@ -34,7 +34,6 @@ input.farflow-tagit-hidden-field {
 }
 .farflow-tagit li.farflow-tagit-choice .farflow-tagit-close {
     cursor: pointer;
-    position: absolute;
     right: .1em;
     top: 50%;
     margin-top: -8px;
@@ -71,18 +70,23 @@ input.farflow-tagit-hidden-field {
 /* Optional scoped theme for tag-it which mimics the zendesk widget. */
 
 .farflow-tagit li.farflow-tagit-choice {
-    -moz-border-radius: 6px;
-    border-radius: 6px;
-    -webkit-border-radius: 6px;
-    border: 1px solid #CAD8F3;
-
-    background: none;
-    background-color: #DEE7F8;
-
-    font-weight: normal;
+    display: inline-block;
+    position: relative;
+    height: 22px;
+    padding: 3px 5px 0px;
+    margin-left: 2px;
+    margin-bottom: 0px;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    border-radius: 1px;
+    background-color: #4279ac;
+    color: #e7eff5;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3);
+    font-family: Arial;
+    font-size: 11px;
+    vertical-align: bottom;
 }
 .farflow-tagit li.farflow-tagit-choice .farflow-tagit-label:not(a) {
-    color: #555;
+    color: white;
 }
 .farflow-tagit li.farflow-tagit-choice a.farflow-tagit-close {
     text-decoration: none;
@@ -98,7 +102,6 @@ input.farflow-tagit-hidden-field {
     font-family: arial, sans-serif;
     font-size: 16px;
     line-height: 16px;
-    color: #777;
 }
 .farflow-tagit li.farflow-tagit-choice:hover, ul.farflow-tagit li.farflow-tagit-choice.farflow-remove {
     background-color: #bbcef1;
