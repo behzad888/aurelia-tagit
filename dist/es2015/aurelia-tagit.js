@@ -22,11 +22,11 @@ export let TagIt = (_dec = customElement('aurelia-tagit'), _dec2 = noView(), _de
             this.tagList = $('<ul></ul>').insertAfter(this.element);
             this.options.singleField = true;
             this.options.singleFieldNode = this.element;
-            this.element.addClass('tagit-hidden-field');
+            this.element.addClass('farflow-tagit-hidden-field');
         } else {
             this.tagList = this.element.find('ul, ol').andSelf().last();
         }
-        this.tagInput = $('<input type="text" />').addClass('ui-widget-content');
+        this.tagInput = $('<input type="text" />').addClass('farflow-ui-widget-content');
 
         if (this.options.readOnly) this.tagInput.attr('disabled', 'disabled');
 
@@ -66,11 +66,11 @@ export let TagIt = (_dec = customElement('aurelia-tagit'), _dec2 = noView(), _de
             this.options.tagSource = $.proxy(this.options.tagSource, this);
         }
 
-        this.tagList.addClass('tagit').addClass('ui-widget ui-widget-content ui-corner-all').append($('<li class="tagit-new"></li>').append(this.tagInput)).click(function (e) {
+        this.tagList.addClass('farflow-tagit').addClass('farflow-ui-widget farflow-ui-widget-content farflow-ui-corner-all').append($('<li class="farflow-tagit-new"></li>').append(this.tagInput)).click(function (e) {
             var target = $(e.target);
-            if (target.hasClass('tagit-label')) {
-                var tag = target.closest('.tagit-choice');
-                if (!tag.hasClass('removed')) {
+            if (target.hasClass('farflow-tagit-label')) {
+                var tag = target.closest('.farflow-tagit-choice');
+                if (!tag.hasClass('farflow-removed')) {
                     that._trigger('onTagClicked', e, { tag: tag, tagLabel: that.tagLabel(tag) });
                 }
             } else {
@@ -96,7 +96,7 @@ export let TagIt = (_dec = customElement('aurelia-tagit'), _dec2 = noView(), _de
 
         if (!addedExistingFromSingleFieldNode) {
             this.tagList.children('li').each(function () {
-                if (!$(this).hasClass('tagit-new')) {
+                if (!$(this).hasClass('farflow-tagit-new')) {
                     that.createTag($(this).text(), $(this).attr('class'), true);
                     $(this).remove();
                 }
@@ -106,13 +106,13 @@ export let TagIt = (_dec = customElement('aurelia-tagit'), _dec2 = noView(), _de
         this.tagInput.keydown(function (event) {
             if (event.which == that.keys.BACKSPACE && that.tagInput.val() === '') {
                 var tag = that._lastTag();
-                if (!that.options.removeConfirmation || tag.hasClass('remove')) {
+                if (!that.options.removeConfirmation || tag.hasClass('farflow-remove')) {
                     that.removeTag(tag);
                 } else if (that.options.removeConfirmation) {
-                    tag.addClass('remove ui-state-highlight');
+                    tag.addClass('farflow-remove farflow-ui-state-highlight');
                 }
             } else if (that.options.removeConfirmation) {
-                that._lastTag().removeClass('remove ui-state-highlight');
+                that._lastTag().removeClass('farflow-remove farflow-ui-state-highlight');
             }
 
             if (event.which === that.keys.COMMA && event.shiftKey === false || event.which === that.keys.ENTER || event.which == that.keys.TAB && that.tagInput.val() !== '' || event.which == that.keys.SPACE && that.options.allowSpaces !== true && ($.trim(that.tagInput.val()).replace(/^s*/, '').charAt(0) != '"' || $.trim(that.tagInput.val()).charAt(0) == '"' && $.trim(that.tagInput.val()).charAt($.trim(that.tagInput.val()).length - 1) == '"' && $.trim(that.tagInput.val()).length - 1 !== 0)) {
@@ -142,24 +142,24 @@ export let TagIt = (_dec = customElement('aurelia-tagit'), _dec2 = noView(), _de
     destroy() {
         $.Widget.prototype.destroy.call(this);
 
-        this.element.unbind('.tagit');
-        this.tagList.unbind('.tagit');
+        this.element.unbind('.farflow-tagit');
+        this.tagList.unbind('.farflow-tagit');
 
         this.tagInput.removeData('autocomplete-open');
 
-        this.tagList.removeClass(['tagit', 'ui-widget', 'ui-widget-content', 'ui-corner-all', 'tagit-hidden-field'].join(' '));
+        this.tagList.removeClass(['farflow-tagit', 'farflow-ui-widget', 'farflow-ui-widget-content', 'farflow-ui-corner-all', 'farflow-tagit-hidden-field'].join(' '));
 
         if (this.element.is('input')) {
-            this.element.removeClass('tagit-hidden-field');
+            this.element.removeClass('farflow-tagit-hidden-field');
             this.tagList.remove();
         } else {
             this.element.children('li').each(function () {
                 if ($(this).hasClass('tagit-new')) {
                     $(this).remove();
                 } else {
-                    $(this).removeClass(['tagit-choice', 'ui-widget-content', 'ui-state-default', 'ui-state-highlight', 'ui-corner-all', 'remove', 'tagit-choice-editable', 'tagit-choice-read-only'].join(' '));
+                    $(this).removeClass(['farflow-tagit-choice', 'farflow-ui-widget-content', 'farflow-ui-state-default', 'farflow-ui-state-highlight', 'farflow-ui-corner-all', 'farflow-remove', 'farflow-tagit-choice-editable', 'farflow-tagit-choice-read-only'].join(' '));
 
-                    $(this).text($(this).children('.tagit-label').text());
+                    $(this).text($(this).children('.farflow-tagit-label').text());
                 }
             });
 
@@ -178,7 +178,7 @@ export let TagIt = (_dec = customElement('aurelia-tagit'), _dec2 = noView(), _de
     }
     tagLabel(tag) {
         if (this.options.singleField) {
-            return $(tag).find('.tagit-label:first').text();
+            return $(tag).find('.farflow-tagit-label:first').text();
         } else {
             return $(tag).find('input:first').val();
         }
@@ -193,11 +193,11 @@ export let TagIt = (_dec = customElement('aurelia-tagit'), _dec2 = noView(), _de
         return result;
     }
     _lastTag() {
-        return this.tagList.find('.tagit-choice:last:not(.removed)');
+        return this.tagList.find('.farflow-tagit-choice:last:not(.farflow-removed)');
     }
 
     _tags() {
-        return this.tagList.find('.tagit-choice:not(.removed)');
+        return this.tagList.find('.farflow-tagit-choice:not(.farflow-removed)');
     }
 
     assignedTags() {
@@ -273,17 +273,17 @@ export let TagIt = (_dec = customElement('aurelia-tagit'), _dec2 = noView(), _de
             return false;
         }
 
-        var label = $(this.options.onTagClicked ? '<a class="tagit-label"></a>' : '<span class="tagit-label"></span>').text(value);
+        var label = $(this.options.onTagClicked ? '<a class="farflow-tagit-label"></a>' : '<span class="farflow-tagit-label"></span>').text(value);
 
-        var tag = $('<li></li>').addClass('tagit-choice ui-widget-content ui-state-default ui-corner-all').addClass(additionalClass).append(label);
+        var tag = $('<li></li>').addClass('farflow-tagit-choice farflow-ui-widget-content farflow-ui-state-default farflow-ui-corner-all').addClass(additionalClass).append(label);
 
         if (this.options.readOnly) {
-            tag.addClass('tagit-choice-read-only');
+            tag.addClass('farflow-tagit-choice-read-only');
         } else {
-            tag.addClass('tagit-choice-editable');
+            tag.addClass('farflow-tagit-choice-editable');
 
-            var removeTagIcon = $('<span></span>').addClass('ui-icon ui-icon-close');
-            var removeTag = $('<a><span class="text-icon">\xd7</span></a>').addClass('tagit-close').append(removeTagIcon).click(function (e) {
+            var removeTagIcon = $('<span></span>').addClass('farflow-ui-icon farflow-ui-icon-close');
+            var removeTag = $('<a><span class="farflow-text-icon">\xd7</span></a>').addClass('farflow-tagit-close').append(removeTagIcon).click(function (e) {
                 that.removeTag(tag);
             });
             tag.append(removeTag);
@@ -291,7 +291,7 @@ export let TagIt = (_dec = customElement('aurelia-tagit'), _dec2 = noView(), _de
 
         if (!this.options.singleField) {
             var escapedValue = label.html();
-            tag.append('<input type="hidden" value="' + escapedValue + '" name="' + this.options.fieldName + '" class="tagit-hidden-field" />');
+            tag.append('<input type="hidden" value="' + escapedValue + '" name="' + this.options.fieldName + '" class="farflow-tagit-hidden-field" />');
         }
 
         if (this._trigger('beforeTagAdded', null, {
