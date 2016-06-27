@@ -1,6 +1,6 @@
-import {inject} from 'aurelia-framework';
+import {inject} from 'aurelia-framework'; 
 export class App {
   constructor() {
-
+    
   }
 }

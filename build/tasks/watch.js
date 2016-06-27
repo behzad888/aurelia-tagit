@@ -15,6 +15,7 @@ gulp.task('watch', ['serve'], function() {
   var bs = browserSync.get('Sample server');
 
   gulp.watch(paths.source, ['build-amd', bs.reload]).on('change', reportChange);
+  gulp.watch(paths.style, ['build-css', bs.reload]).on('change', reportChange);
   gulp.watch(paths.html, ['build-html-amd', bs.reload]).on('change', reportChange);
   gulp.watch(paths.style, bs.reload).on('change', reportChange);
   gulp.watch(paths.sample + '/*', bs.reload).on('change', reportChange);

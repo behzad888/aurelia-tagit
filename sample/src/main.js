@@ -4,7 +4,11 @@ export function configure(aurelia) {
   aurelia.use
     .standardConfiguration()
     .developmentLogging()
-    .plugin('aurelia-tagit');
+    .plugin('aurelia-tagit',instance=>{
+      instance.autocomplete = {
+        "salam":"salam"
+      }
+    });
 
   aurelia.start().then(a => a.setRoot('src/app'));
 }

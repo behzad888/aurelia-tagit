@@ -58,15 +58,19 @@
   },
   "jspm": {
     "registry": "npm",
-    "jspmPackage": true,
     "main": "index",
     "format": "amd",
     "directories": {
       "dist": "dist/amd"
     },
-    "peerDependencies": {},
+    "dependencies": {
+      "css": "github:systemjs/plugin-css@^0.1.23"
+    },
     "devDependencies": {
-      "aurelia-polyfills": "^1.0.0-beta.1.1.0"
+      "aurelia-polyfills": "^1.0.0-beta.1.1.0",
+      "babel": "babel-core@^5.8.24",
+      "babel-runtime": "^5.8.24",
+      "core-js": "^1.1.4"
     }
   }
 }

@@ -4,6 +4,6 @@ export function configure(aurelia, configCallback) {
     
     let baseConfig = aurelia.container.get(BaseConfig);
     if (configCallback !== undefined && typeof (configCallback) === 'function') {
-        configCallback(baseConfig);
+        configCallback(baseConfig.current);
     }
 }
