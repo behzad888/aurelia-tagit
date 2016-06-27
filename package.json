@@ -2,7 +2,7 @@
   "name": "aurelia-tagit",
   "version": "1.0.0",
   "description": "An Aurelia example for JQueryUI plugin to handle muti-tag fields",
-  "main": "index.js",
+  "main": "dist/amd/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
