@@ -1,5 +1,4 @@
 export class BaseConfig {
-    options: {};
     get current() {
         return this.options;
     }
