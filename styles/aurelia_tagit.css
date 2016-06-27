@@ -1,38 +1,38 @@
-.tagit {
+.farflow-tagit {
     padding: 1px 5px;
     overflow: auto;
     margin-left: inherit; /* usually we don't want the regular ul margins. */
     margin-right: inherit;
 }
-.tagit li {
+.farflow-tagit li {
     display: block;
     float: left;
     margin: 2px 5px 2px 0;
 }
-.tagit li.tagit-choice {    
+.farflow-tagit li.farflow-tagit-choice {    
     position: relative;
     line-height: inherit;
 }
-input.tagit-hidden-field {
+input.farflow-tagit-hidden-field {
     display: none;
 }
-.tagit li.tagit-choice-read-only { 
+.farflow-tagit li.farflow-tagit-choice-read-only { 
     padding: .2em .5em .2em .5em; 
 } 
 
-.tagit li.tagit-choice-editable { 
+.farflow-tagit li.farflow-tagit-choice-editable { 
     padding: .2em 18px .2em .5em; 
 } 
 
-.tagit li.tagit-new {
+.farflow-tagit li.farflow-tagit-new {
     padding: .25em 4px .25em 0;
 }
 
-.tagit li.tagit-choice a.tagit-label {
+.farflow-tagit li.farflow-tagit-choice a.farflow-tagit-label {
     cursor: pointer;
     text-decoration: none;
 }
-.tagit li.tagit-choice .tagit-close {
+.farflow-tagit li.farflow-tagit-choice .farflow-tagit-close {
     cursor: pointer;
     position: absolute;
     right: .1em;
@@ -42,16 +42,16 @@ input.tagit-hidden-field {
 }
 
 /* used for some custom themes that don't need image icons */
-.tagit li.tagit-choice .tagit-close .text-icon {
+.farflow-tagit li.farflow-tagit-choice .farflow-tagit-close .farflow-text-icon {
     display: none;
 }
 
-.tagit li.tagit-choice input {
+.farflow-tagit li.farflow-tagit-choice input {
     display: block;
     float: left;
     margin: 2px 5px 2px 0;
 }
-.tagit input[type="text"] {
+.farflow-tagit input[type="text"] {
     -moz-box-sizing:    border-box;
     -webkit-box-sizing: border-box;
     box-sizing:         border-box;
@@ -68,11 +68,9 @@ input.tagit-hidden-field {
     outline: none;
 }
 
-
-
 /* Optional scoped theme for tag-it which mimics the zendesk widget. */
 
-.tagit li.tagit-choice {
+.farflow-tagit li.farflow-tagit-choice {
     -moz-border-radius: 6px;
     border-radius: 6px;
     -webkit-border-radius: 6px;
@@ -83,55 +81,55 @@ input.tagit-hidden-field {
 
     font-weight: normal;
 }
-.tagit li.tagit-choice .tagit-label:not(a) {
+.farflow-tagit li.farflow-tagit-choice .farflow-tagit-label:not(a) {
     color: #555;
 }
-.tagit li.tagit-choice a.tagit-close {
+.farflow-tagit li.farflow-tagit-choice a.farflow-tagit-close {
     text-decoration: none;
 }
-.tagit li.tagit-choice .tagit-close {
+.farflow-tagit li.farflow-tagit-choice .farflow-tagit-close {
     right: .4em;
 }
-.tagit li.tagit-choice .ui-icon {
+.farflow-tagit li.farflow-tagit-choice .farflow-ui-icon {
     display: none;
 }
-.tagit li.tagit-choice .tagit-close .text-icon {
+.farflow-tagit li.farflow-tagit-choice .farflow-tagit-close .farflow-text-icon {
     display: inline;
     font-family: arial, sans-serif;
     font-size: 16px;
     line-height: 16px;
     color: #777;
 }
-.tagit li.tagit-choice:hover, ul.tagit li.tagit-choice.remove {
+.farflow-tagit li.farflow-tagit-choice:hover, ul.farflow-tagit li.farflow-tagit-choice.farflow-remove {
     background-color: #bbcef1;
     border-color: #6d95e0;
 }
-.tagit li.tagit-choice a.tagLabel:hover,
-.tagit li.tagit-choice a.tagit-close .text-icon:hover {
+.farflow-tagit li.farflow-tagit-choice a.farflow-tagLabel:hover,
+.farflow-tagit li.farflow-tagit-choice a.farflow-tagit-close .farflow-text-icon:hover {
     color: #222;
 }
-.tagit input[type="text"] {
+.farflow-tagit input[type="text"] {
     color: #333333;
     background: none;
 }
-.ui-widget {
+.farflow-ui-widget {
     font-size: 1.1em;
 }
 
 /* Forked from a jQuery UI theme, so that we don't require the jQuery UI CSS as a dependency. */
-.tagit-autocomplete.ui-autocomplete { position: absolute; cursor: default; }
-* html .tagit-autocomplete.ui-autocomplete { width:1px; } /* without this, the menu expands to 100% in IE6 */
-.tagit-autocomplete.ui-menu {
+.farflow-tagit-autocomplete.farflow-ui-autocomplete { position: absolute; cursor: default; }
+* html .farflow-tagit-autocomplete.farflow-ui-autocomplete { width:1px; } /* without this, the menu expands to 100% in IE6 */
+.farflow-tagit-autocomplete.farflow-ui-menu {
     list-style:none;
     padding: 2px;
     margin: 0;
     display:block;
     float: left;
 }
-.tagit-autocomplete.ui-menu .ui-menu {
+.farflow-tagit-autocomplete.farflow-ui-menu .farflow-ui-menu {
     margin-top: -3px;
 }
-.tagit-autocomplete.ui-menu .ui-menu-item {
+.farflow-tagit-autocomplete.farflow-ui-menu .farflow-ui-menu-item {
     margin:0;
     padding: 0;
     zoom: 1;
@@ -139,22 +137,22 @@ input.tagit-hidden-field {
     clear: left;
     width: 100%;
 }
-.tagit-autocomplete.ui-menu .ui-menu-item a {
+.farflow-tagit-autocomplete.farflow-ui-menu .farflow-ui-menu-item a {
     text-decoration:none;
     display:block;
     padding:.2em .4em;
     line-height:1.5;
     zoom:1;
 }
-.tagit-autocomplete .ui-menu .ui-menu-item a.ui-state-hover,
-.tagit-autocomplete .ui-menu .ui-menu-item a.ui-state-active {
+.farflow-tagit-autocomplete .farflow-ui-menu .farflow-ui-menu-item a.farflow-ui-state-hover,
+.farflow-tagit-autocomplete .farflow-ui-menu .farflow-ui-menu-item a.farflow-ui-state-active {
     font-weight: normal;
     margin: -1px;
 }
-.tagit-autocomplete.ui-widget-content { border: 1px solid #aaaaaa; background: #ffffff 50% 50% repeat-x; color: #222222; }
-.tagit-autocomplete.ui-corner-all, .tagit-autocomplete .ui-corner-all { -moz-border-radius: 4px; -webkit-border-radius: 4px; -khtml-border-radius: 4px; border-radius: 4px; }
-.tagit-autocomplete .ui-state-hover, .tagit-autocomplete .ui-state-focus { border: 1px solid #999999; background: #dadada; font-weight: normal; color: #212121; }
-.tagit-autocomplete .ui-state-active  { border: 1px solid #aaaaaa; }
+.farflow-tagit-autocomplete.farflow-ui-widget-content { border: 1px solid #aaaaaa; background: #ffffff 50% 50% repeat-x; color: #222222; }
+.farflow-tagit-autocomplete.farflow-ui-corner-all, .farflow-tagit-autocomplete .farflow-ui-corner-all { -moz-border-radius: 4px; -webkit-border-radius: 4px; -khtml-border-radius: 4px; border-radius: 4px; }
+.farflow-tagit-autocomplete .farflow-ui-state-hover, .farflow-tagit-autocomplete .farflow-ui-state-focus { border: 1px solid #999999; background: #dadada; font-weight: normal; color: #212121; }
+.farflow-tagit-autocomplete .farflow-ui-state-active  { border: 1px solid #aaaaaa; }
 
-.tagit-autocomplete .ui-widget-content { border: 1px solid #aaaaaa; }
-.tagit .ui-helper-hidden-accessible { position: absolute !important; clip: rect(1px,1px,1px,1px); }
+.farflow-tagit-autocomplete .farflow-ui-widget-content { border: 1px solid #aaaaaa; }
+.farflow-tagit .farflow-ui-helper-hidden-accessible { position: absolute !important; clip: rect(1px,1px,1px,1px); }

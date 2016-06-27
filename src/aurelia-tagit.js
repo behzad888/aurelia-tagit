@@ -22,11 +22,11 @@ export class TagIt {
             this.tagList = $('<ul></ul>').insertAfter(this.element);
             this.options.singleField = true;
             this.options.singleFieldNode = this.element;
-            this.element.addClass('tagit-hidden-field');
+            this.element.addClass('farflow-tagit-hidden-field');
         } else {
             this.tagList = this.element.find('ul, ol').andSelf().last();
         }
-        this.tagInput = $('<input type="text" />').addClass('ui-widget-content');
+        this.tagInput = $('<input type="text" />').addClass('farflow-ui-widget-content');
 
         if (this.options.readOnly) this.tagInput.attr('disabled', 'disabled');
 
@@ -73,15 +73,15 @@ export class TagIt {
         }
 
         this.tagList
-            .addClass('tagit')
-            .addClass('ui-widget ui-widget-content ui-corner-all')
+            .addClass('farflow-tagit')
+            .addClass('farflow-ui-widget farflow-ui-widget-content farflow-ui-corner-all')
             // Create the input field.
-            .append($('<li class="tagit-new"></li>').append(this.tagInput))
+            .append($('<li class="farflow-tagit-new"></li>').append(this.tagInput))
             .click(function (e) {
                 var target = $(e.target);
-                if (target.hasClass('tagit-label')) {
-                    var tag = target.closest('.tagit-choice');
-                    if (!tag.hasClass('removed')) {
+                if (target.hasClass('farflow-tagit-label')) {
+                    var tag = target.closest('.farflow-tagit-choice');
+                    if (!tag.hasClass('farflow-removed')) {
                         that._trigger('onTagClicked', e, { tag: tag, tagLabel: that.tagLabel(tag) });
                     }
                 } else {
@@ -114,7 +114,7 @@ export class TagIt {
         // Add existing tags from the list, if any.
         if (!addedExistingFromSingleFieldNode) {
             this.tagList.children('li').each(function () {
-                if (!$(this).hasClass('tagit-new')) {
+                if (!$(this).hasClass('farflow-tagit-new')) {
                     that.createTag($(this).text(), $(this).attr('class'), true);
                     $(this).remove();
                 }
@@ -127,14 +127,14 @@ export class TagIt {
                 // Backspace is not detected within a keypress, so it must use keydown.
                 if (event.which == that.keys.BACKSPACE && that.tagInput.val() === '') {
                     var tag = that._lastTag();
-                    if (!that.options.removeConfirmation || tag.hasClass('remove')) {
+                    if (!that.options.removeConfirmation || tag.hasClass('farflow-remove')) {
                         // When backspace is pressed, the last tag is deleted.
                         that.removeTag(tag);
                     } else if (that.options.removeConfirmation) {
-                        tag.addClass('remove ui-state-highlight');
+                        tag.addClass('farflow-remove farflow-ui-state-highlight');
                     }
                 } else if (that.options.removeConfirmation) {
-                    that._lastTag().removeClass('remove ui-state-highlight');
+                    that._lastTag().removeClass('farflow-remove farflow-ui-state-highlight');
                 }
 
                 // Comma/Space/Enter are all valid delimiters for new tags,
@@ -207,21 +207,21 @@ export class TagIt {
     destroy() {
         $.Widget.prototype.destroy.call(this);
 
-        this.element.unbind('.tagit');
-        this.tagList.unbind('.tagit');
+        this.element.unbind('.farflow-tagit');
+        this.tagList.unbind('.farflow-tagit');
 
         this.tagInput.removeData('autocomplete-open');
 
         this.tagList.removeClass([
-            'tagit',
-            'ui-widget',
-            'ui-widget-content',
-            'ui-corner-all',
-            'tagit-hidden-field'
+            'farflow-tagit',
+            'farflow-ui-widget',
+            'farflow-ui-widget-content',
+            'farflow-ui-corner-all',
+            'farflow-tagit-hidden-field'
         ].join(' '));
 
         if (this.element.is('input')) {
-            this.element.removeClass('tagit-hidden-field');
+            this.element.removeClass('farflow-tagit-hidden-field');
             this.tagList.remove();
         } else {
             this.element.children('li').each(function () {
@@ -229,17 +229,17 @@ export class TagIt {
                     $(this).remove();
                 } else {
                     $(this).removeClass([
-                        'tagit-choice',
-                        'ui-widget-content',
-                        'ui-state-default',
-                        'ui-state-highlight',
-                        'ui-corner-all',
-                        'remove',
-                        'tagit-choice-editable',
-                        'tagit-choice-read-only'
+                        'farflow-tagit-choice',
+                        'farflow-ui-widget-content',
+                        'farflow-ui-state-default',
+                        'farflow-ui-state-highlight',
+                        'farflow-ui-corner-all',
+                        'farflow-remove',
+                        'farflow-tagit-choice-editable',
+                        'farflow-tagit-choice-read-only'
                     ].join(' '));
 
-                    $(this).text($(this).children('.tagit-label').text());
+                    $(this).text($(this).children('.farflow-tagit-label').text());
                 }
             });
 
@@ -260,7 +260,7 @@ export class TagIt {
     tagLabel(tag) {
         // Returns the tag's string label.
         if (this.options.singleField) {
-            return $(tag).find('.tagit-label:first').text();
+            return $(tag).find('.farflow-tagit-label:first').text();
         } else {
             return $(tag).find('input:first').val();
         }
@@ -275,11 +275,11 @@ export class TagIt {
         return result;
     }
     _lastTag() {
-        return this.tagList.find('.tagit-choice:last:not(.removed)');
+        return this.tagList.find('.farflow-tagit-choice:last:not(.farflow-removed)');
     }
 
     _tags() {
-        return this.tagList.find('.tagit-choice:not(.removed)');
+        return this.tagList.find('.farflow-tagit-choice:not(.farflow-removed)');
     }
 
     assignedTags() {
@@ -357,23 +357,23 @@ export class TagIt {
             return false;
         }
 
-        var label = $(this.options.onTagClicked ? '<a class="tagit-label"></a>' : '<span class="tagit-label"></span>').text(value);
+        var label = $(this.options.onTagClicked ? '<a class="farflow-tagit-label"></a>' : '<span class="farflow-tagit-label"></span>').text(value);
 
         // Create tag.
         var tag = $('<li></li>')
-            .addClass('tagit-choice ui-widget-content ui-state-default ui-corner-all')
+            .addClass('farflow-tagit-choice farflow-ui-widget-content farflow-ui-state-default farflow-ui-corner-all')
             .addClass(additionalClass)
             .append(label);
 
         if (this.options.readOnly) {
-            tag.addClass('tagit-choice-read-only');
+            tag.addClass('farflow-tagit-choice-read-only');
         } else {
-            tag.addClass('tagit-choice-editable');
+            tag.addClass('farflow-tagit-choice-editable');
             // Button for removing the tag.
             var removeTagIcon = $('<span></span>')
-                .addClass('ui-icon ui-icon-close');
-            var removeTag = $('<a><span class="text-icon">\xd7</span></a>') // \xd7 is an X
-                .addClass('tagit-close')
+                .addClass('farflow-ui-icon farflow-ui-icon-close');
+            var removeTag = $('<a><span class="farflow-text-icon">\xd7</span></a>') // \xd7 is an X
+                .addClass('farflow-tagit-close')
                 .append(removeTagIcon)
                 .click(function (e) {
                     // Removes a tag when the little 'x' is clicked.
@@ -385,7 +385,7 @@ export class TagIt {
         // Unless options.singleField is set, each tag has a hidden input field inline.
         if (!this.options.singleField) {
             var escapedValue = label.html();
-            tag.append('<input type="hidden" value="' + escapedValue + '" name="' + this.options.fieldName + '" class="tagit-hidden-field" />');
+            tag.append('<input type="hidden" value="' + escapedValue + '" name="' + this.options.fieldName + '" class="farflow-tagit-hidden-field" />');
         }
 
         if (this._trigger('beforeTagAdded', null, {
